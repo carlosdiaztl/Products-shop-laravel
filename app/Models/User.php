@@ -43,7 +43,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     protected $dates = [
-        'payed_at',
+        'admin_since',
 
     ];
+    public function orders(){
+        return $this->hasMany(Order::class,'customer_id');
+    }
+    public function payments(){
+        //recibe hacia donde queremos llegar y traves de quien luego la clave fronea
+        return $this->hasManyThrough(Payment::class, Order::class, 'customer_id');
+    }
+    public function image(){
+        return $this->morphOne(Image::class,'imageable');
+    }
 }
