@@ -19,13 +19,17 @@ class Product extends Model
     ];
     public function carts(){
         //pertenece a muchos productos 
-        return $this ->BelongsToMany(Cart::class)->withPivot('quantity');
+        // relacion polimorfica de muchos a muchos 
+        return $this->morphedByMany(Cart::class,'productable')->withPivot('quantity');
     }
     public function orders(){
         //pertenece a muchos productos 
-        return $this ->BelongsToMany(Order::class)->withPivot('quantity');
+        return $this->morphedByMany(Order::class,'productable')->withPivot('quantity');
     }
     public function images(){
         return $this ->MorphMany(Image::class,'imageable');
+    }
+    public function scopeAvailable($query){
+        $query->where('status', 'available');
     }
 }

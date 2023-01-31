@@ -8,7 +8,10 @@
 
             @foreach ($products as $product)
                 <div class="col-3">
-                   @include('components.product-card')
+                   {{-- @include('components.product-card') --}}
+                   <x-product-card :product='$product' />
+                   {{-- <x-card.card /> --}}
+
 
                 </div>
             @endforeach

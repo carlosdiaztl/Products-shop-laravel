@@ -16,7 +16,12 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::all();
+        // traer todos los productos 
+        // $products = Product::all();
+
+        // traer solo los productos con status === 'available'
+        // get product where status = 'available' 
+        $products = Product::available()->get();
         // dd($products);
         // return view('products.index',compact('products')) ;
         return view('products.index')->with([
@@ -87,4 +92,5 @@ class ProductController extends Controller
         ->withSuccess("The products with id: {$product->id}  was deleted");;
     }
     //
+    
 }

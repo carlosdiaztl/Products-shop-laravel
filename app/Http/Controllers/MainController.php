@@ -9,7 +9,7 @@ class MainController extends Controller
 {
     //
     public function index(Product $products ){
-       $products= Product::all();
+        $products = Product::available()->get();
         // dd($products);
         return view('welcome',compact('products'));
     }

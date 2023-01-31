@@ -23,6 +23,7 @@ class User extends Authenticatable
         'password',
         'admin_since',
     ];
+    //este admin since debe ser retirado en produccion 
 
     /**
      * The attributes that should be hidden for serialization.

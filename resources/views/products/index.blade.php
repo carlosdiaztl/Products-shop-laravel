@@ -28,8 +28,8 @@
                 @else
                     @foreach ($products as $product)
                         <tr>
-                            <td>{{ $product->id }} </td>
-                            <td> {{ $product->title }}</td>
+                            <td>{{ $product?$product->id:"id not found" }} </td>
+                            <td> {{ $product->title==""?"tittle doesnt't found":"vacio" }}</td>
                             <td> {{ $product->description }} </td>
                             <td> {{ $product->price }}</td>
                             <td> {{ $product->stock }}</td>
