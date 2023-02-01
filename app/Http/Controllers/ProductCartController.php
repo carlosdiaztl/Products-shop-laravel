@@ -101,6 +101,7 @@ class ProductCartController extends Controller
      */
     public function destroy(Product $product, Cart $cart)
     {
+        
         //
     }
     public function getFromCookieOrCreate()

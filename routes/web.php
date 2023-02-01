@@ -19,6 +19,7 @@ Route::resource('products', App\Http\Controllers\ProductController::class)->name
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('products.carts', App\Http\Controllers\ProductCartController::class)->names('products.carts');
+Route::resource('carts', App\Http\Controllers\CartController::class)->only('index');
 
 
 // Route::get('products','@index')->name('products.index');
