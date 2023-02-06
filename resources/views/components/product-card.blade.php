@@ -5,12 +5,11 @@
         <h4 class="text-title">{{ $product->price }}$ </h4>
         <p class="card-text">{{ $product->description }}</p>
         <p class="card-text">{{ $product->stock }} left</p>
-        
-        @if (isset($cart))
-                 
-        <form class="d-inline" method="POST" action="{{ route('products.carts.destroy',[ $cart->id ,$product->id ] ) }} ">
+        @if (isset($cart))       
+        <form class="d-inline" method="POST" action="{{ route('products.carts.destroy',['cart'=> $cart->id , 'product'=> $product ->id] ) }} ">
             @csrf
-            <button type="submit" class="btn btn-success">Remove from cart</button>
+            @method('DELETE')
+            <button type="submit" class="btn btn-warning">Remove from cart</button>
         </form>
         @else
         <form class="d-inline" method="POST" action="{{ route('products.carts.store', $product->id) }} ">
