@@ -4,13 +4,14 @@
     @empty($products)
         <h1> we don't have products to show </h1>
     @else
+        <h1> Welcome</h1>
         <div class="row">
 
             @foreach ($products as $product)
                 <div class="col-3">
-                   {{-- @include('components.product-card') --}}
-                   <x-product-card :product='$product' />
-                   {{-- <x-card.card /> --}}
+                    {{-- @include('components.product-card') --}}
+                    <x-product-card :product='$product' />
+                    {{-- <x-card.card /> --}}
 
 
                 </div>

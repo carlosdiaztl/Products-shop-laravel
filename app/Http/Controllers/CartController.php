@@ -21,11 +21,9 @@ class CartController extends Controller
     }
 
     public function index()
-    {  
-        $cart = $this->cartService->getFromCookie();   
+    {
+        $cart = $this->cartService->getFromCookie();
         return view('carts.index', compact('cart'));
         // return view('carts.index');
     }
-    
-        
-   }
+}
