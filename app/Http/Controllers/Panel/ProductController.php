@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Panel;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -9,10 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->except('index','show');
-    }
+
 
     public function index()
     {
@@ -35,7 +33,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
 
-       
+
         // if ($request->status == 'available' && $request->stock == 0) {
         //     // session()->flash('error', 'If available must have stock  ');
         //     return redirect()->back()
@@ -43,10 +41,10 @@ class ProductController extends Controller
         // }
         // dd(request()->all(),$request->all(),$request->validated());
         $product = Product::create($request->validated());
-        
-        
+
+
         return redirect()->route('products.index')
-        ->withSuccess("The new products with id: {$product->id}  was created");
+            ->withSuccess("The new products with id: {$product->id}  was created");
     }
 
     public function show(Product $product)
@@ -67,30 +65,33 @@ class ProductController extends Controller
             'product' => $product,
         ]);
     }
-    public function update(ProductRequest $request,Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-      
-       
+
+
         // $product = Product::findorFail($product);
 
         // if (request()->status == 'available' && request()->stock == 0) {
-            
+
         //     return redirect()->back()
         //         ->withInput(request()->all())
         //         ->withErrors('If available must have stock');
         // }
+
         $product->update($request->validated());
-        
+
         return redirect()->route('products.index')
-        ->withSuccess("The products with id: {$product->id}  was edited");
+            ->withSuccess("The products with id: {$product->id}  was edited");
     }
     public function destroy(Product $product)
     {
         // $product = Product::findorFail($product);
+
         $product->delete();
+        //decir que el producto no s epuede liminar porque petence a una tabla 
         return redirect()->route('products.index')
-        ->withSuccess("The products with id: {$product->id}  was deleted");;
+            ->withSuccess("The products with id: {$product->id}  was deleted");;
     }
     //
-    
+
 }

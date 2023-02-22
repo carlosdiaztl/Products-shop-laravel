@@ -25,7 +25,7 @@
                     <tr>
                         <td>
                             <img src="{{ asset($product->images->first()->path) }}" width="100" alt="">
-                            {{ $product->title == '' ? "tittle doesnt't found" : 'vacio' }}
+                            {{ $product->title }}
                         </td>
                         <td> {{ $product->price }}</td>
                         <td> {{ $product->description }} </td>

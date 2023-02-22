@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('main', App\Http\Controllers\MainController::class)->names('main');
-Route::resource('products', App\Http\Controllers\ProductController::class)->names('products');
+
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('products.carts', App\Http\Controllers\ProductCartController::class)->names('products.carts');
