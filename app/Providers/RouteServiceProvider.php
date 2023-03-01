@@ -52,7 +52,7 @@ class RouteServiceProvider extends ServiceProvider
     }
     protected function mapPanelRoutes()
     {
-        Route::middleware(['web', 'auth'])
+        Route::middleware(['web', 'auth', 'isAdmin'])
             ->namespace($this->namespace)
             ->prefix('panel')
             ->group(base_path('routes/panel.php'));

@@ -19,7 +19,7 @@
 
                 </tr>
             </thead>
-            <tbody>
+            <tbody>@dump($products)
                 @empty($products)
                     <div class="alert warning">
                         The list of products is empty

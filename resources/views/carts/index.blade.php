@@ -8,17 +8,13 @@
     @else
         <h4 class="text-center">Your cart total <strong> {{ $cart->total }}</strong> </h4>
         <a class="btn btn-success mb-3" href="{{ route('orders.create') }} ">Start Order</a>
-        <div class="row">
-
+        <div class="row mb-5 content-welcome">
             @foreach ($cart->products as $product)
-                <div class="col-3">
-                    {{-- @include('components.product-card') --}}
-                    <x-product-card :product='$product' :cart='$cart' />
-                    {{-- <x-card.card /> --}}
-
-
-                </div>
+                {{-- @include('components.product-card') --}}
+                <x-product-card :product='$product' :cart='$cart' />
+                {{-- <x-card.card /> --}}
             @endforeach
+
         </div>
     @endempty
 @endsection

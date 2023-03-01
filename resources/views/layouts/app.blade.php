@@ -13,6 +13,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('build/assets/styles/global.scss') }}" />
+    <link rel="stylesheet" href="{{ asset('build/assets/styles/products.scss') }}" />
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -34,20 +36,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('products.index') }}">Products</a>
-                        </li>
+                        {{-- {{ auth()->user()->isAdmin() == true? 1: 2 }} --}}
+
+                        @if (optional(auth()->user())->isAdmin())
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="{{ route('panel') }}">Panel</a>
+                            </li>
+                        @endif
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('carts.index') }}">Cart
                                 @inject('cartService', 'App\services\CartService')
-                                <span>( {{ $cartService->countProducts() === 0 ? '' : $cartService->countProducts() }} )
+                                <span>( {{ $cartService->countProducts() === 0 ? '' : $cartService->countProducts() }}
+                                    )
                                 </span>
-
-
-
-
-
-
 
                             </a>
                         </li>

@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'admin_since',
+        // 'admin_since',
     ];
     //este admin since debe ser retirado en produccion 
 
@@ -47,14 +47,24 @@ class User extends Authenticatable
         'admin_since',
 
     ];
-    public function orders(){
-        return $this->hasMany(Order::class,'customer_id');
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'customer_id');
     }
-    public function payments(){
+    public function payments()
+    {
         //recibe hacia donde queremos llegar y traves de quien luego la clave fronea
         return $this->hasManyThrough(Payment::class, Order::class, 'customer_id');
     }
-    public function image(){
-        return $this->morphOne(Image::class,'imageable');
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+    public function  isAdmin()
+    {
+        return  $this->admin_since != null
+            && $this->admin_since->lessThanOrEqualTo(now());
+        // una funcion para saber si es igual o menor a la fecha actual 
+
     }
 }

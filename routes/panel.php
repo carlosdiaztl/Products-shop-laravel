@@ -14,4 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/panel', [App\Http\Controllers\Panel\PanelController::class, 'index'])->name('panel');
+//panel 
 Route::resource('products', App\Http\Controllers\Panel\ProductController::class)->names('products');
